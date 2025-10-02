@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeProvider";
-import { Navbar } from "@/components/ui/Navbar";
+import { Navbar, Footer } from "@/components/ui";
 import { navItems } from "@/utils";
 import "./globals.css";
 
@@ -33,7 +33,10 @@ export default function RootLayout({
             brandName="Onboarding Manager"
             logoHref="/"
           />
-          {children}
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
