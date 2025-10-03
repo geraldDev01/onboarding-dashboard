@@ -23,6 +23,7 @@
     "react-dom": "19.1.0",
     "react-hook-form": "^7.63.0",
     "react-select": "^5.10.2",
+    "react-toastify": "^11.0.5",
     "zod": "^4.1.11"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-toastify": "^4.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "tailwindcss": "^4",

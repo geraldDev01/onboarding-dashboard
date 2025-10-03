@@ -10,6 +10,8 @@ import { CreateEmployeeData } from '@/schemas/createEmployeeSchema';
 import { useRouter } from 'next/navigation';
 import { formatHireDate, formatCurrency } from '@/utils';
 import { Plus } from 'lucide-react';
+import { toastHelpers } from '@/components/ui/Toast';
+import { createEmployeeAction } from '@/app/actions/employess';
 
 const employeeColumns: ColumnDef<Employee>[] = [
   { 
@@ -67,17 +69,29 @@ export default function EmployeesPage() {
     setError(null);
     
     try {
-      // TODO: Implement API call to create employee
       console.log('Creating employee:', data);
+      const newEmployee = await createEmployeeAction(data);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log('Employee created:', newEmployee);
       setIsModalOpen(false);
       setError(null);
-      alert('Employee created successfully!');
       
-    } catch {
-      setError('Failed to create employee. Please try again.');
+      // Success toast notification
+      toastHelpers.success(
+        `Employee ${newEmployee.name} created successfully!`,
+        { duration: 4000 }
+      );
+      
+    } catch (err) {
+      console.error('Failed to create employee:', err);
+      const errorMessage = err instanceof Error 
+        ? err.message 
+        : 'Failed to create employee. Please try again.';
+      
+      setError(errorMessage);
+      
+      // Error toast notification
+      toastHelpers.error(errorMessage, { duration: 6000 });
     } finally {
       setIsCreating(false);
     }

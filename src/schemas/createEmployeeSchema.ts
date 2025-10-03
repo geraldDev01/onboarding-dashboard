@@ -5,8 +5,7 @@ import { DEPARTMENTS, COUNTRIES } from '@/types/employee';
 export const createEmployeeSchema = z.object({
   name: z
     .string()
-    .min(3, 'Name must have at least 3 characters')
-    .min(1, 'Full name is required'),
+    .nonempty('Full name is required'),
   email: z
     .email('Invalid email format')
     .refine((val) => val.endsWith('@rebuhr.com'), {
@@ -17,7 +16,7 @@ export const createEmployeeSchema = z.object({
   }),
   hireDate: z
     .string()
-    .min(1, 'Hire date is required')
+    .nonempty('Hire date is required')
     .refine((dateString) => {
       const hireDate = DateTime.fromISO(dateString);
       const today = DateTime.now().startOf('day');
