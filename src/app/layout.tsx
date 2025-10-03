@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import { AuthProvider } from "@/context/AuthContext";
 import { Navbar, Footer } from "@/components/ui";
-import { navItems } from "@/utils";
 import "./globals.css";
-
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -28,17 +27,18 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased`}
       >
         <ThemeProvider>
-          <div className="min-h-screen bg-background dark:bg-background flex flex-col">
-            <Navbar
-              items={navItems}
-              brandName="Onboarding Manager"
-              logoHref="/"
-            />
-            <main className="flex-1 container mx-auto px-4 py-8">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div className="min-h-screen bg-background dark:bg-background flex flex-col">
+              <Navbar
+                brandName="Onboarding Manager"
+                logoHref="/"
+              />
+              <main className="flex-1 container mx-auto px-4 py-8">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -2,23 +2,23 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LoginForm } from '@/components/forms/LoginForm';
-import { loginAction } from '@/app/actions/auth';
+import { useAuth } from '@/context/AuthContext';
 import { type LoginFormData } from '@/schemas';
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
     setError('');
 
     try {
-      const result = await loginAction(data.email, data.password);
+      const result = await login(data.email, data.password);
       if (result.success) {
         router.push('/dashboard');
-        router.refresh(); 
       } else {
         setError(result.error || 'Invalid credentials');
       }

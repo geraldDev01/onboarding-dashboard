@@ -6,7 +6,6 @@ export interface NavItem {
 }
 
 export interface NavbarProps {
-  items: NavItem[];
   brandName?: string;
   logoHref?: string;
   className?: string;
