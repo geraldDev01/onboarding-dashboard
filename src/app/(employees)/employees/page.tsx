@@ -5,14 +5,47 @@ import { allMockEmployees } from '@/data';
 import { ColumnDef } from '@tanstack/react-table';
 import { Employee } from '@/types/employee';
 import { useRouter } from 'next/navigation';
+import { formatHireDate, formatCurrency } from '@/utils';
 
 const employeeColumns: ColumnDef<Employee>[] = [
-  { accessorKey: 'name', header: 'Name' },
-  { accessorKey: 'email', header: 'Email' },
-  { accessorKey: 'department', header: 'Department' },
-  { accessorKey: 'hireDate', header: 'Hire Date' },
-  { accessorKey: 'country', header: 'Country' },
-  { accessorKey: 'salary', header: 'Salary' },
+  { 
+    accessorKey: 'name', 
+    header: 'NAME',
+    enableSorting: true,
+  },
+  { 
+    accessorKey: 'email', 
+    header: 'EMAIL',
+    enableSorting: false,
+  },
+  { 
+    accessorKey: 'department', 
+    header: 'DEPARTMENT',
+    enableSorting: false,
+  },
+  { 
+    accessorKey: 'hireDate', 
+    header: 'HIRE DATE',
+    enableSorting: true,
+    cell: ({ getValue }) => {
+      const date = getValue() as string;
+      return formatHireDate(date);
+    },
+  },
+  { 
+    accessorKey: 'country', 
+    header: 'COUNTRY',
+    enableSorting: false,
+  },
+  { 
+    accessorKey: 'salary', 
+    header: 'SALARY',
+    enableSorting: true,
+    cell: ({ getValue }) => {
+      const salary = getValue() as number;
+      return formatCurrency(salary);
+    },
+  },
 ];
 
 export default function EmployeesPage() {
