@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "react-datepicker/dist/react-datepicker.css";
+@import "react-toastify/dist/ReactToastify.css";
 
 :root {
   --primary: 22 76 68; /* #184C44 */
@@ -38,5 +39,8 @@
 body {
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+.toast-wrapper {
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }

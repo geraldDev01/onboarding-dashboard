@@ -11,6 +11,7 @@ export { Card } from './Card';
 export { Table } from './Table';
 export { InfoCard } from './InfoCard';
 export { Modal } from './Modal';
+export { Toast, ToastContainerWrapper, toastHelpers } from './Toast';
 
 // Types
 export type { NavbarProps, NavItem } from './Navbar/types';
