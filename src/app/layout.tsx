@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { ThemeProvider } from "@/context/theme-provider";
+import { ThemeProvider } from "@/context/ThemeProvider";
+import { AuthProvider } from "@/context/AuthContext";
+import { Navbar, Footer } from "@/components/ui";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -20,12 +22,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${poppins.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
+          <AuthProvider>
+            <div className="min-h-screen bg-background dark:bg-background flex flex-col">
+              <Navbar
+                brandName="Onboarding Manager"
+                logoHref="/"
+              />
+              <main className="flex-1 container mx-auto px-4 py-8">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
