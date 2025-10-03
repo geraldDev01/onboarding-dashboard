@@ -2,16 +2,16 @@ export interface Employee {
   id: string;
   name: string;
   email: string;
-  department: string;
+  department: Department;
   hireDate: string;
-  country: string;
+  country: Country;
   salary: number;
 }
 
 export interface EmployeeFilters {
   search: string;
-  departments: string[];
-  countries: string[];
+  departments: Department[];
+  countries: Country[];
 }
 
 export interface EmployeeSortConfig {
@@ -33,24 +33,13 @@ export const DEPARTMENTS = [
 ] as const;
 
 export const COUNTRIES = [
-  'United States',
-  'Canada',
-  'Mexico',
-  'Brazil',
-  'Argentina',
-  'United Kingdom',
-  'Germany',
-  'France',
-  'Spain',
-  'Italy',
-  'Netherlands',
-  'Sweden',
-  'Norway',
-  'Denmark',
-  'Japan',
-  'South Korea',
-  'China',
-  'India',
-  'Australia',
-  'New Zealand'
+  'El Salvador',
+  'Guatemala',
+  'Nicaragua',
+  'Honduras',
+  'Costa Rica',
+  'Panamá'
 ] as const;
+
+export type Department = typeof DEPARTMENTS[number];
+export type Country = typeof COUNTRIES[number];
