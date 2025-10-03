@@ -7,6 +7,7 @@ export { Textarea } from './Textarea';
 export { Checkbox } from './Checkbox';
 export { Toggle } from './Toggle';
 export { Slider } from './Slider';
+export { Card } from './Card';
 
 // Types
 export type { NavbarProps, NavItem } from './Navbar/types';
