@@ -72,7 +72,7 @@ export async function getUserAction() {
       success: true,
       user: { email: decoded.email, name: decoded.name },
     };
-  } catch (error) {
+  } catch {
     return { success: false, error: "Invalid or expired token" };
   }
 }

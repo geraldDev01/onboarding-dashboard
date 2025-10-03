@@ -8,6 +8,7 @@ export { Checkbox } from './Checkbox';
 export { Toggle } from './Toggle';
 export { Slider } from './Slider';
 export { Card } from './Card';
+export { Table } from './Table';
 
 // Types
 export type { NavbarProps, NavItem } from './Navbar/types';
