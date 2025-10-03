@@ -7,6 +7,10 @@ export { Textarea } from './Textarea';
 export { Checkbox } from './Checkbox';
 export { Toggle } from './Toggle';
 export { Slider } from './Slider';
+export { Card } from './Card';
+export { Table } from './Table';
+export { InfoCard } from './InfoCard';
+export { Modal } from './Modal';
 
 // Types
 export type { NavbarProps, NavItem } from './Navbar/types';
