@@ -19,7 +19,6 @@ interface SliderProps {
   name?: string;
   marks?: Array<{ value: number; label: string }>;
   showValue?: boolean;
-  orientation?: 'horizontal' | 'vertical';
   ref?: React.Ref<HTMLInputElement>;
 }
 
@@ -40,7 +39,6 @@ export const Slider: React.FC<SliderProps> = ({
   name,
   marks = [],
   showValue = true,
-  orientation = 'horizontal',
   ref,
 }) => {
   const [currentValue, setCurrentValue] = useState(value ?? defaultValue);
