@@ -76,7 +76,7 @@ export default function EmployeesPage() {
       setError(null);
       alert('Employee created successfully!');
       
-    } catch (err) {
+    } catch {
       setError('Failed to create employee. Please try again.');
     } finally {
       setIsCreating(false);

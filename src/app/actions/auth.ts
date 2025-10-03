@@ -45,7 +45,7 @@ export async function loginAction(credentials: LoginCredentials): Promise<AuthRe
     }
 
     return { success: false, error: "Invalid credentials" };
-  } catch (error) {
+  } catch {
     return { success: false, error: "Login failed due to server error" };
   }
 }
@@ -61,7 +61,7 @@ export async function logoutAction(): Promise<AuthResponse> {
     });
 
     return { success: true };
-  } catch (error) {
+  } catch {
     return { success: false, error: "Logout failed due to server error" };
   }
 }

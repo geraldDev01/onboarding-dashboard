@@ -50,7 +50,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setUser(null);
         setError(result.error || 'Authentication check failed');
       }
-    } catch (err) {
+    } catch {
       setUser(null);
       setError('Authentication check failed');
     } finally {
@@ -71,7 +71,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setError(result.error || 'Login failed. Please try again.');
         return { success: false, error: result.error };
       }
-    } catch (err) {
+    } catch {
       setError('Login failed. Please try again.');
       return { success: false, error: 'Login failed. Please try again.' };
     } finally {
@@ -86,7 +86,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setUser(null);
         setError(null);
       }
-    } catch (err) {
+    } catch {
       setError('Logout failed');
     }
   }, []);

@@ -3,7 +3,7 @@ export interface User {
   name: string;
 }
 
-export type AuthResponse<T = any> = {
+export type AuthResponse<T = unknown> = {
   success: boolean;
   data?: T;
   error?: string;

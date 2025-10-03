@@ -106,7 +106,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
             <Select
               options={departmentOptions}
               value={departmentOptions.find(option => option.value === selectedDepartment)}
-              onChange={(option) => setValue('department', option?.value as any, { shouldValidate: true })}
+              onChange={(option) => setValue('department', option?.value || 'Engineering', { shouldValidate: true })}
               placeholder="Selecciona el departamento"
               isSearchable={false}
             />
@@ -126,7 +126,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
             <Select
               options={countryOptions}
               value={countryOptions.find(option => option.value === selectedCountry)}
-              onChange={(option) => setValue('country', option?.value as any, { shouldValidate: true })}
+              onChange={(option) => setValue('country', option?.value || 'El Salvador', { shouldValidate: true })}
               placeholder="Selecciona el país"
               isSearchable={false}
             />
