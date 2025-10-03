@@ -4,13 +4,12 @@ import { revalidatePath } from "next/cache";
 import { createEmployeeSchema } from "@/schemas/createEmployeeSchema";
 import type { Employee } from "@/types/employee";
 
-let IN_MEMORY_EMPLOYEES: Employee[] = []; // demo only — serverless hosts will reset; OK for take-home
+const IN_MEMORY_EMPLOYEES: Employee[] = [];
 
 export async function createEmployeeAction(data: unknown): Promise<Employee> {
   // Validate data server-side
   const parsed = createEmployeeSchema.safeParse(data);
   if (!parsed.success) {
-    // Provide more detailed error information
     throw new Error(
       `Validation failed: ${parsed.error.issues.map((issue) => issue.message).join(", ")}`
     );
