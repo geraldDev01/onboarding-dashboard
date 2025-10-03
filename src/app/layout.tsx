@@ -28,15 +28,17 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased`}
       >
         <ThemeProvider>
-          <Navbar
-            items={navItems}
-            brandName="Onboarding Manager"
-            logoHref="/"
-          />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
+          <div className="min-h-screen bg-background dark:bg-background flex flex-col">
+            <Navbar
+              items={navItems}
+              brandName="Onboarding Manager"
+              logoHref="/"
+            />
+            <main className="flex-1 container mx-auto px-4 py-8">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
