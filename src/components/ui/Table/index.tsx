@@ -21,6 +21,7 @@ interface TableProps<T> {
   searchableFields?: string[];
   pageSize?: number;
   className?: string;
+  onRowClick?: (row: T) => void;
 }
 
 export function Table<T>({
@@ -29,6 +30,7 @@ export function Table<T>({
   searchableFields = [],
   pageSize = 10,
   className = '',
+  onRowClick,
 }: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -108,7 +110,11 @@ export function Table<T>({
             </thead>
             <tbody>
               {table.getRowModel().rows.map(row => (
-                <tr key={row.id} className="hover:bg-gray-50">
+                <tr 
+                  key={row.id} 
+                  className={`hover:bg-gray-50 ${onRowClick ? 'cursor-pointer' : ''}`}
+                  onClick={() => onRowClick?.(row.original)}
+                >
                   {row.getVisibleCells().map(cell => (
                     <td key={cell.id} className="px-6 py-4 whitespace-nowrap">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}

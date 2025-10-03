@@ -3,11 +3,12 @@ import { ArrowRight } from 'lucide-react';
 import { clsx } from 'clsx';
 
 interface CardProps {
-  title: string;
-  description: string;
-  actionText: string;
-  href: string;
+  title?: string;
+  description?: string;
+  actionText?: string;
+  href?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -16,7 +17,18 @@ export const Card: React.FC<CardProps> = ({
   actionText,
   href,
   className = '',
+  children,
 }) => {
+  if (children) {
+    return (
+      <div className={clsx(
+        'bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden',
+        className
+      )}>
+        {children}
+      </div>
+    );
+  }
   return (
     <div className={clsx(
       'bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200',

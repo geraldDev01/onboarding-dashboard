@@ -9,6 +9,7 @@ export { Toggle } from './Toggle';
 export { Slider } from './Slider';
 export { Card } from './Card';
 export { Table } from './Table';
+export { InfoCard } from './InfoCard';
 
 // Types
 export type { NavbarProps, NavItem } from './Navbar/types';

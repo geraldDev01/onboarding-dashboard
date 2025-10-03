@@ -29,10 +29,7 @@ export default function RootLayout({
         <ThemeProvider>
           <AuthProvider>
             <div className="min-h-screen bg-background dark:bg-background flex flex-col">
-              <Navbar
-                brandName="Onboarding Manager"
-                logoHref="/"
-              />
+              <Navbar/>
               <main className="flex-1 container mx-auto px-4 py-8">
                 {children}
               </main>

@@ -4,6 +4,7 @@ import { Table } from '@/components/ui/Table';
 import { allMockEmployees } from '@/data';
 import { ColumnDef } from '@tanstack/react-table';
 import { Employee } from '@/types/employee';
+import { useRouter } from 'next/navigation';
 
 const employeeColumns: ColumnDef<Employee>[] = [
   { accessorKey: 'name', header: 'Name' },
@@ -15,6 +16,12 @@ const employeeColumns: ColumnDef<Employee>[] = [
 ];
 
 export default function EmployeesPage() {
+  const router = useRouter();
+
+  const handleRowClick = (employee: Employee) => {
+    router.push(`/employees/${employee.id}`);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
@@ -29,6 +36,7 @@ export default function EmployeesPage() {
         columns={employeeColumns}
         searchableFields={['name', 'email', 'department']}
         pageSize={10}
+        onRowClick={handleRowClick}
       />
     </div>
   );
