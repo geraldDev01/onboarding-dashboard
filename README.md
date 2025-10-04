@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Onboarding Dashboard
 
-## Getting Started
+Una aplicación moderna de gestión de empleados para el proceso de onboarding, construida con las últimas tecnologías web.
 
-First, run the development server:
+## 🚀 Instalación y Ejecución
 
+### Prerrequisitos
+- Node.js 18+ 
+- pnpm (recomendado) o npm/yarn
+
+### Instalación
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clonar el repositorio
+git clone <repository-url>
+cd onboarding-dashboard
+
+# Instalar dependencias
+pnpm install
+
+# Configurar variables de entorno (opcional)
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Comandos Disponibles
+```bash
+# Desarrollo
+pnpm dev              # Servidor de desarrollo con Turbopack
+pnpm build            # Build de producción
+pnpm start            # Servidor de producción
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Testing
+pnpm test             # Ejecutar tests
+pnpm test:watch       # Tests en modo observación
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Linting & Type Checking
+pnpm lint             # ESLint
+pnpm type-check       # TypeScript validation
+```
 
-## Learn More
+### Ejecución Local
+```bash
+pnpm dev
+```
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-To learn more about Next.js, take a look at the following resources:
+## 🏗️ Decisiones Técnicas Importantes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **1. Next.js 15 con App Router**
+- **Por qué**: Elegí Next.js 15 por su arquitectura moderna de App Router, mejor performance y soporte nativo para React Server Components
+- **Beneficio**: Routing declarativo, middleware integrado, y optimizaciones automáticas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **2. React Hook Form + Zod**
+- **Por qué**: Combinación más eficiente para formularios complejos con validación robusta
+- **Beneficio**: 
+  - Performance superior vs useState native
+  - Validación tanto client-side como server-side
+  - TypeScript inference automático
 
-## Deploy on Vercel
+### **3. Server Actions**
+- **Por qué**: API más simple que REST/GraphQL para operaciones CRUD
+- **Beneficio**: Código más limpio, mejor DX, eliminación de boilerplate API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### **4. Luxon para Fechas**
+- **Por qué**: Librería más robusta que Date nativo
+- **Beneficio**: Mejor manejo de timezones, operaciones inmutables, API más limpia
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **5. Tailwind CSS 4**
+- **Por qué**: Desarrollo rápido, consistencia visual, fácil mantenimiento
+- **Beneficio**: Responsive design, tema dark/light automático
+
+### **6. Jest + React Testing Library**
+- **Por qué**: Estándar de la industria para testing React
+- **Beneficio**: Coverage completo, tests rápidos, mejores prácticas
+
+## ✨ Features Implementadas
+
+### **🔐 Autenticación**
+```typescript
+- Login con JWT tokens
+- Middleware de protección de rutas
+- Context API para manejo de estado
+- Server Actions para auth
+```
+
+### **👥 Gestión de Empleados**
+```typescript
+- CRUD completo de empleados
+- Formulario avanzado con auto-save draft
+- Validación en tiempo real
+- Tabla dinámica con paginación y filtros
+```
+
+### **📝 Formularios Inteligentes**
+```typescript
+✅ Auto-save cada 30 segundos en localStorage
+✅ Recuperación automática al recargar página
+✅ Limpieza post-submit exitoso
+✅ Validación con Zod schemas
+✅ Estados de error visuales (rojos)
+```
+
+### **🎨 UI/UX**
+```typescript
+- Design System completo (Button, Input, Card, Table)
+- Toast notifications
+- Responsive design completo
+```
+
+### **⏰ Gestión de Tiempo**
+- Componente DatePicker integrado
+- Formato de fechas consistente
+- Validación de fechas futuras/pasadas
+
+### **📊 Data Management**
+- Mock data en memoria
+- Server Actions para persistencia
+- Revalidación de cache automática
+- TypeScript strict mode
+
+## ⏱️ Tiempo Invertido
+
+**📅 Total: ~17 horas** 
+- Configuración inicial y arquitectura
+- Implementación core features (auth, empleados, formularios)
+- Testing y refinamientos UX
+
+## 🤖 Uso de AI
+
+### **Qué se usó AI para:**
+- 📝 **Crear boilerplate code**: Estructura inicial de tests y componentes
+- 🔧 **Debugging específico**: Resolver errores de console
+- 🐛 **Error resolution**: Resolver problemas de configuración (Jest, ESLint)
+
+### **Documentación generada:**
+- Este README 
+
+## 🎯 Demo Credentials
+
+```
+Email: admin@rebuhr.com
+Password: password123
+```
+
+## 📋 Licencia
+
+MIT License - Libre para uso personal y comercial.
+
+---
