@@ -7,6 +7,7 @@ import { DEPARTMENTS, COUNTRIES } from '@/types/employee';
 import { UserPlus, DollarSign } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
+import { DateTime } from 'luxon';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface CreateEmployeeFormProps {
@@ -33,7 +34,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
       name: '',
       email: '',
       department: 'Engineering',
-      hireDate: new Date().toISOString().split('T')[0],
+      hireDate: DateTime.now().toISO(),
       salary: 3000,
       country: 'El Salvador',
     },
@@ -81,7 +82,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
               {...register('name')}
               error={!!errors.name}
               errorMessage={errors.name?.message}
-              helperText="Mínimo 3 caracteres"
+            
             />
           </div>
 
@@ -94,7 +95,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
               {...register('email')}
               error={!!errors.email}
               errorMessage={errors.email?.message}
-              helperText="Debe usar el dominio @rebuhr.com"
+              
             />
           </div>
 
@@ -113,9 +114,6 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
             {errors.department && (
               <p className="text-sm text-red-500">{errors.department.message}</p>
             )}
-            {!errors.department && (
-              <p className="text-sm text-gray-500">Selecciona el departamento del empleado</p>
-            )}
           </div>
 
           {/* Country */}
@@ -132,9 +130,6 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
             />
             {errors.country && (
               <p className="text-sm text-red-500">{errors.country.message}</p>
-            )}
-            {!errors.country && (
-              <p className="text-sm text-gray-500">Selecciona el país del empleado</p>
             )}
           </div>
         </div>
@@ -156,10 +151,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
           />
           {errors.hireDate && (
             <p className="text-sm text-red-500">{errors.hireDate.message}</p>
-          )}
-          {!errors.hireDate && (
-            <p className="text-sm text-gray-500">No puede ser anterior a hoy</p>
-          )}
+          )}    
         </div>
 
         {/* Salary */}
