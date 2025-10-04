@@ -37,6 +37,20 @@ pnpm lint             # ESLint
 pnpm type-check       # TypeScript validation
 ```
 
+### **Stack Tecnológico Completo**
+```typescript
+🎯 Core: Next.js 15 + React 19 + TypeScript
+🎨 Styling: Tailwind CSS 4 + Design System
+📝 Forms: React Hook Form + Zod validation
+🗃️ State: Context API + localStorage
+📅 Dates: Luxon (evita new Date())
+🔍 Icons: Lucide React
+🧪 Testing: Jest + React Testing Library
+🚀 Build: Turbopack (Next.js optimized)
+🐳 Containerization: Docker + docker-compose
+🔄 CI/CD: GitHub Actions pipeline
+```
+
 ### Ejecución Local
 ```bash
 pnpm dev
@@ -87,6 +101,10 @@ docker run -p 3000:3000 onboarding-dashboard
 - **Por qué**: Consistencia entre entornos, deployment simplificado
 - **Beneficio**: "It works on my machine" eliminado, scaling horizontal fácil
 
+### **8. GitHub Actions CI/CD**
+- **Por qué**: Automatización completa del proceso de calidad y deployment
+- **Beneficio**: Checks automáticos, no bugs en main, mejor collaboration workflow
+
 ## ✨ Features Implementadas
 
 ### **🔐 Autenticación**
@@ -103,6 +121,7 @@ docker run -p 3000:3000 onboarding-dashboard
 - Formulario avanzado con auto-save draft
 - Validación en tiempo real
 - Tabla dinámica con paginación y filtros
+- Botón Edit en página de detalle (pre-llenado)
 ```
 
 ### **📝 Formularios Inteligentes**
@@ -118,6 +137,7 @@ docker run -p 3000:3000 onboarding-dashboard
 ```typescript
 - Design System completo (Button, Input, Card, Table)
 - Toast notifications
+- Copy-to-clipboard para credenciales demo
 - Responsive design completo
 ```
 
@@ -131,6 +151,16 @@ docker run -p 3000:3000 onboarding-dashboard
 - Server Actions para persistencia
 - Revalidación de cache automática
 - TypeScript strict mode
+
+### **🧪 Testing Infrastructure**
+```typescript
+✅ Jest + React Testing Library setup completo
+✅ 25 tests passing (100% success rate)
+✅ Component testing: Button, Input, Card
+✅ Jest DOM matchers configurados
+✅ Mock strategies para Next.js
+✅ CI/CD integration en GitHub Actions
+```
 
 ## ⏱️ Tiempo Invertido
 
@@ -168,6 +198,28 @@ docker-compose up --build
 # Solo build manual
 docker build -t onboarding-dashboard .
 docker run -p 3000:3000 onboarding-dashboard
+```
+
+### **🔄 CI/CD Pipeline con GitHub Actions**
+```typescript
+✅ GitHub Actions workflow configurado
+✅ Linting automático (ESLint)
+✅ Type checking automático (TypeScript)
+✅ Build verification automático
+✅ Cache de dependencies para performance
+✅ Runs en push y pull requests
+✅ Node.js 20 + pnpm optimizado
+```
+
+**Pipeline Flow:**
+```bash
+1. Trigger: Push/PR → main branch
+2. Checkout code + Setup Node.js 20
+3. Install pnpm + cache dependencies  
+4. Run linting (ESLint)
+5. Run type checking (TypeScript)
+6. Build application (verification)
+7. ✅ All checks must pass
 ```
 
 ## 🎯 Demo Credentials
