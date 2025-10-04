@@ -43,7 +43,18 @@ pnpm dev
 ```
 Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-## 🏗️ Decisiones Técnicas Importantes
+### 🐳 Docker
+```bash
+# Build y ejecutar con Docker
+docker-compose up --build
+
+# O para desarrollo con hot reload
+docker-compose up dev
+
+# Build manual
+docker build -t onboarding-dashboard .
+docker run -p 3000:3000 onboarding-dashboard
+``## 🏗️ Decisiones Técnicas Importantes
 
 ### **1. Next.js 15 con App Router**
 - **Por qué**: Elegí Next.js 15 por su arquitectura moderna de App Router, mejor performance y soporte nativo para React Server Components
@@ -71,6 +82,10 @@ Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 ### **6. Jest + React Testing Library**
 - **Por qué**: Estándar de la industria para testing React
 - **Beneficio**: Coverage completo, tests rápidos, mejores prácticas
+
+### **7. Docker Containerization**
+- **Por qué**: Consistencia entre entornos, deployment simplificado
+- **Beneficio**: "It works on my machine" eliminado, scaling horizontal fácil
 
 ## ✨ Features Implementadas
 
@@ -133,6 +148,27 @@ Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
 ### **Documentación generada:**
 - Este README 
+
+## 🚀 DevOps & Containerización
+
+### **🐳 Docker Implementation**
+```typescript
+✅ Dockerfile multi-stage optimizado para Next.js
+✅ docker-compose para producción simplificada  
+✅ Image size optimizado con Alpine Linux
+✅ Security hardening (non-root user)
+✅ Restart policies automáticas
+```
+
+**Comandos Docker:**
+```bash
+# Producción completa
+docker-compose up --build
+
+# Solo build manual
+docker build -t onboarding-dashboard .
+docker run -p 3000:3000 onboarding-dashboard
+```
 
 ## 🎯 Demo Credentials
 
