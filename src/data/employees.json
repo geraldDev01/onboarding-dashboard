@@ -6,7 +6,7 @@
     "department": "Engineering",
     "hireDate": "2023-01-15",
     "country": "United States",
-    "salary": 85000
+    "salary": 8500
   },
   {
     "id": "emp-002",
@@ -15,7 +15,7 @@
     "department": "Marketing",
     "hireDate": "2022-03-22",
     "country": "Canada",
-    "salary": 72000
+    "salary": 7200
   },
   {
     "id": "emp-003",
@@ -24,7 +24,7 @@
     "department": "Sales",
     "hireDate": "2023-06-10",
     "country": "United Kingdom",
-    "salary": 68000
+    "salary": 6800
   },
   {
     "id": "emp-004",
@@ -33,7 +33,7 @@
     "department": "Human Resources",
     "hireDate": "2021-11-05",
     "country": "Australia",
-    "salary": 75000
+    "salary": 7500
   },
   {
     "id": "emp-005",
@@ -42,7 +42,7 @@
     "department": "Finance",
     "hireDate": "2022-08-18",
     "country": "Germany",
-    "salary": 92000
+    "salary": 9200
   },
   {
     "id": "emp-006",
@@ -51,7 +51,7 @@
     "department": "Operations",
     "hireDate": "2023-02-14",
     "country": "Spain",
-    "salary": 71000
+    "salary": 7100
   },
   {
     "id": "emp-007",
@@ -60,7 +60,7 @@
     "department": "Customer Support",
     "hireDate": "2022-05-30",
     "country": "France",
-    "salary": 65000
+    "salary": 6500
   },
   {
     "id": "emp-008",
@@ -69,7 +69,7 @@
     "department": "Product Management",
     "hireDate": "2021-09-12",
     "country": "Netherlands",
-    "salary": 88000
+    "salary": 8800
   },
   {
     "id": "emp-009",
@@ -78,7 +78,7 @@
     "department": "Design",
     "hireDate": "2023-04-07",
     "country": "Italy",
-    "salary": 78000
+    "salary": 7800
   },
   {
     "id": "emp-010",
@@ -87,7 +87,7 @@
     "department": "Legal",
     "hireDate": "2022-12-03",
     "country": "Japan",
-    "salary": 95000
+    "salary": 9500
   },
   {
     "id": "emp-011",
@@ -96,7 +96,7 @@
     "department": "Engineering",
     "hireDate": "2021-07-20",
     "country": "South Korea",
-    "salary": 87000
+    "salary": 8700
   },
   {
     "id": "emp-012",
@@ -105,7 +105,7 @@
     "department": "Marketing",
     "hireDate": "2023-01-08",
     "country": "China",
-    "salary": 73000
+    "salary": 7300
   },
   {
     "id": "emp-013",
@@ -114,7 +114,7 @@
     "department": "Sales",
     "hireDate": "2022-10-15",
     "country": "India",
-    "salary": 69000
+    "salary": 6900
   },
   {
     "id": "emp-014",
@@ -123,7 +123,7 @@
     "department": "Human Resources",
     "hireDate": "2021-04-25",
     "country": "Brazil",
-    "salary": 76000
+    "salary": 7600
   },
   {
     "id": "emp-015",
@@ -132,7 +132,7 @@
     "department": "Finance",
     "hireDate": "2023-03-12",
     "country": "Mexico",
-    "salary": 81000
+    "salary": 8100
   },
   {
     "id": "emp-016",
@@ -141,7 +141,7 @@
     "department": "Operations",
     "hireDate": "2022-07-28",
     "country": "Argentina",
-    "salary": 70000
+    "salary": 7000
   },
   {
     "id": "emp-017",
@@ -150,7 +150,7 @@
     "department": "Customer Support",
     "hireDate": "2021-12-10",
     "country": "Sweden",
-    "salary": 66000
+    "salary": 6600
   },
   {
     "id": "emp-018",
@@ -159,7 +159,7 @@
     "department": "Product Management",
     "hireDate": "2023-05-17",
     "country": "Norway",
-    "salary": 89000
+    "salary": 8900
   },
   {
     "id": "emp-019",
@@ -168,7 +168,7 @@
     "department": "Design",
     "hireDate": "2022-02-09",
     "country": "Denmark",
-    "salary": 79000
+    "salary": 7900
   },
   {
     "id": "emp-020",
@@ -177,7 +177,7 @@
     "department": "Legal",
     "hireDate": "2021-08-14",
     "country": "New Zealand",
-    "salary": 93000
+    "salary": 9300
   },
   {
     "id": "emp-021",
@@ -186,7 +186,7 @@
     "department": "Engineering",
     "hireDate": "2023-06-25",
     "country": "United States",
-    "salary": 86000
+    "salary": 8600
   },
   {
     "id": "emp-022",
@@ -195,7 +195,7 @@
     "department": "Marketing",
     "hireDate": "2022-11-18",
     "country": "Canada",
-    "salary": 74000
+    "salary": 7400
   },
   {
     "id": "emp-023",
@@ -204,7 +204,7 @@
     "department": "Sales",
     "hireDate": "2021-05-03",
     "country": "United Kingdom",
-    "salary": 71000
+    "salary": 7100
   },
   {
     "id": "emp-024",
@@ -213,7 +213,7 @@
     "department": "Human Resources",
     "hireDate": "2023-09-12",
     "country": "Australia",
-    "salary": 77000
+    "salary": 7700
   },
   {
     "id": "emp-025",
@@ -222,7 +222,7 @@
     "department": "Finance",
     "hireDate": "2022-04-20",
     "country": "Germany",
-    "salary": 84000
+    "salary": 8400
   },
   {
     "id": "emp-026",
@@ -231,7 +231,7 @@
     "department": "Operations",
     "hireDate": "2021-10-07",
     "country": "Spain",
-    "salary": 72000
+    "salary": 7200
   },
   {
     "id": "emp-027",
@@ -240,7 +240,7 @@
     "department": "Customer Support",
     "hireDate": "2023-01-30",
     "country": "France",
-    "salary": 67000
+    "salary": 6700
   },
   {
     "id": "emp-028",
@@ -249,7 +249,7 @@
     "department": "Product Management",
     "hireDate": "2022-08-05",
     "country": "Netherlands",
-    "salary": 91000
+    "salary": 9100
   },
   {
     "id": "emp-029",
@@ -258,7 +258,7 @@
     "department": "Design",
     "hireDate": "2021-06-22",
     "country": "Italy",
-    "salary": 80000
+    "salary": 8000
   },
   {
     "id": "emp-030",
@@ -267,7 +267,7 @@
     "department": "Legal",
     "hireDate": "2023-07-14",
     "country": "Japan",
-    "salary": 96000
+    "salary": 9600
   },
   {
     "id": "emp-031",
@@ -276,7 +276,7 @@
     "department": "Engineering",
     "hireDate": "2022-03-11",
     "country": "South Korea",
-    "salary": 88000
+    "salary": 8800
   },
   {
     "id": "emp-032",
@@ -285,7 +285,7 @@
     "department": "Marketing",
     "hireDate": "2021-11-28",
     "country": "China",
-    "salary": 75000
+    "salary": 7500
   },
   {
     "id": "emp-033",
@@ -294,7 +294,7 @@
     "department": "Sales",
     "hireDate": "2023-04-16",
     "country": "India",
-    "salary": 70000
+    "salary": 7000
   },
   {
     "id": "emp-034",
@@ -303,7 +303,7 @@
     "department": "Human Resources",
     "hireDate": "2022-09-23",
     "country": "Brazil",
-    "salary": 78000
+    "salary": 7800
   },
   {
     "id": "emp-035",
@@ -312,7 +312,7 @@
     "department": "Finance",
     "hireDate": "2021-12-19",
     "country": "Mexico",
-    "salary": 82000
+    "salary": 8200
   },
   {
     "id": "emp-036",
@@ -321,7 +321,7 @@
     "department": "Operations",
     "hireDate": "2023-02-27",
     "country": "Argentina",
-    "salary": 73000
+    "salary": 7300
   },
   {
     "id": "emp-037",
@@ -330,7 +330,7 @@
     "department": "Customer Support",
     "hireDate": "2022-06-14",
     "country": "Sweden",
-    "salary": 68000
+    "salary": 6800
   },
   {
     "id": "emp-038",
@@ -339,7 +339,7 @@
     "department": "Product Management",
     "hireDate": "2021-08-31",
     "country": "Norway",
-    "salary": 92000
+    "salary": 9200
   },
   {
     "id": "emp-039",
@@ -348,7 +348,7 @@
     "department": "Design",
     "hireDate": "2023-05-08",
     "country": "Denmark",
-    "salary": 81000
+    "salary": 8100
   },
   {
     "id": "emp-040",
@@ -357,7 +357,7 @@
     "department": "Legal",
     "hireDate": "2022-01-25",
     "country": "New Zealand",
-    "salary": 94000
+    "salary": 9400
   },
   {
     "id": "emp-041",
@@ -366,7 +366,7 @@
     "department": "Engineering",
     "hireDate": "2021-09-16",
     "country": "United States",
-    "salary": 87000
+    "salary": 8700
   },
   {
     "id": "emp-042",
@@ -375,7 +375,7 @@
     "department": "Marketing",
     "hireDate": "2023-03-04",
     "country": "Canada",
-    "salary": 76000
+    "salary": 7600
   },
   {
     "id": "emp-043",
@@ -384,7 +384,7 @@
     "department": "Sales",
     "hireDate": "2022-10-21",
     "country": "United Kingdom",
-    "salary": 72000
+    "salary": 7200
   },
   {
     "id": "emp-044",
@@ -393,7 +393,7 @@
     "department": "Human Resources",
     "hireDate": "2021-07-13",
     "country": "Australia",
-    "salary": 79000
+    "salary": 7900
   },
   {
     "id": "emp-045",
@@ -402,7 +402,7 @@
     "department": "Finance",
     "hireDate": "2023-08-29",
     "country": "Germany",
-    "salary": 85000
+    "salary": 8500
   },
   {
     "id": "emp-046",
@@ -411,7 +411,7 @@
     "department": "Operations",
     "hireDate": "2022-05-06",
     "country": "Spain",
-    "salary": 74000
+    "salary": 7400
   },
   {
     "id": "emp-047",
@@ -420,7 +420,7 @@
     "department": "Customer Support",
     "hireDate": "2021-12-12",
     "country": "France",
-    "salary": 69000
+    "salary": 6900
   },
   {
     "id": "emp-048",
@@ -429,7 +429,7 @@
     "department": "Product Management",
     "hireDate": "2023-06-18",
     "country": "Netherlands",
-    "salary": 90000
+    "salary": 9000
   },
   {
     "id": "emp-049",
@@ -438,7 +438,7 @@
     "department": "Design",
     "hireDate": "2022-02-15",
     "country": "Italy",
-    "salary": 82000
+    "salary": 8200
   },
   {
     "id": "emp-050",
@@ -447,6 +447,6 @@
     "department": "Legal",
     "hireDate": "2021-10-02",
     "country": "Japan",
-    "salary": 97000
+    "salary": 9700
   }
 ]
