@@ -8,9 +8,10 @@ export const createEmployeeSchema = z.object({
     .nonempty('Full name is required'),
   email: z
     .email('Invalid email format')
-    .refine((val) => val.endsWith('@rebuhr.com'), {
-      message: 'Email must use the domain @rebuhr.com',
-    }),
+    .refine((val) => val.endsWith("@rebuhr.com"), {
+      message: "Email must use @rebuhr.com domain",
+    })
+    .nonempty('Email is required'),
   department: z.enum(DEPARTMENTS, {
     message: 'Must select a department',
   }),

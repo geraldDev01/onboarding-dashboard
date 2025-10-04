@@ -26,12 +26,7 @@ export async function createEmployeeAction(data: unknown): Promise<Employee> {
   await new Promise((res) => setTimeout(res, 800));
   IN_MEMORY_EMPLOYEES.unshift(newEmployee);
 
-  // Revalidate the employees route on the server (so server components reading employees will refresh)
-  try {
-    revalidatePath("/employees");
-  } catch (e) {
-    // no-op if revalidatePath not relevant
-  }
+  revalidatePath("/employees");
 
   return newEmployee;
 }

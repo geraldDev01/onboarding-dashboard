@@ -119,7 +119,7 @@ export const Input: React.FC<InputProps> = ({
       </div>
 
       {error && errorMessage && (
-        <p className="text-sm text-destructive dark:text-destructive">
+        <p className="text-sm text-red-600 dark:text-red-400">
           {errorMessage}
         </p>
       )}

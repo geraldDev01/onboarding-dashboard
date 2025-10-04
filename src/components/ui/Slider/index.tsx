@@ -154,7 +154,7 @@ export const Slider: React.FC<SliderProps> = ({
       )}
 
       {error && errorMessage && (
-        <p className="text-sm text-destructive dark:text-destructive">
+        <p className="text-sm text-red-600 dark:text-red-400">
           {errorMessage}
         </p>
       )}
