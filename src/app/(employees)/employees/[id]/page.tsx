@@ -5,6 +5,7 @@ import { Mail, Building2, Calendar, MapPin, DollarSign, User } from 'lucide-reac
 import { formatHireDate, formatCurrency } from '@/utils';
 import { getEmployeesAction } from '@/app/actions/employess';
 import { BackButton } from '@/components/Employee/BackButton';
+import { EditEmployeeButton } from '@/components/Employee/EditEmployeeButton';
 
 interface EmployeeDetailPageProps {
   params: Promise<{ id: string }>;
@@ -37,8 +38,9 @@ export default async function EmployeeDetailPage({ params }: EmployeeDetailPageP
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
+      <div className="mb-8 px-4 flex justify-between items-center">
         <BackButton />
+        <EditEmployeeButton employee={employee} />
       </div>
 
       {/* Employee Details Card - Centered */}

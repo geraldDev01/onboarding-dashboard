@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, Slider } from '@/components/ui';
 import { createEmployeeSchema, type CreateEmployeeData } from '@/schemas';
-import { DEPARTMENTS, COUNTRIES } from '@/types/employee';
+import { DEPARTMENTS, COUNTRIES, type Employee } from '@/types/employee';
 import { UserPlus, DollarSign } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
@@ -15,23 +15,26 @@ interface CreateEmployeeFormProps {
   onSubmit: (data: CreateEmployeeData) => Promise<void>;
   isLoading?: boolean;
   error?: string;
+  initialData?: Employee; // For editing mode
 }
 
 // Default form values (empty form)
-const getDefaultValues = (): Partial<CreateEmployeeData> => ({
-  name: '',
-  email: '',
-  department: 'Engineering',
-  hireDate: '',
-  salary: 3000,
-  country: 'El Salvador',
+const getDefaultValues = (initialData?: Employee): Partial<CreateEmployeeData> => ({
+  name: initialData?.name || '',
+  email: initialData?.email || '',
+  department: initialData?.department || 'Engineering',
+  hireDate: initialData?.hireDate || '',
+  salary: initialData?.salary || 3000,
+  country: initialData?.country || 'El Salvador',
 });
 
 export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
   onSubmit,
   isLoading = false,
   error,
+  initialData,
 }) => {
+  const isEditing = !!initialData;
   const saveIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const {
@@ -43,7 +46,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
   } = useForm<CreateEmployeeData>({
     mode: 'onChange',
     resolver: zodResolver(createEmployeeSchema),
-    defaultValues: getDefaultValues(),
+    defaultValues: getDefaultValues(initialData),
   });
 
   const salaryValue = watch('salary') || 3000;
@@ -127,7 +130,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
           <UserPlus className="w-8 h-8 text-white" />
         </div>
         <p className="mt-3 text-sm text-muted-foreground dark:text-muted-foreground">
-          Add a new team member to your organization
+          {isEditing ? 'Update team member information' : 'Add a new team member to your organization'}
         </p>
       </div>
 
@@ -137,7 +140,6 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
           <div className="space-y-2">
             <Input
               label="Nombre completo"
-              placeholder="John Doe"
               {...register('name')}
               error={!!errors.name}
               errorMessage={errors.name?.message}
@@ -149,7 +151,6 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
             <Input
               label="Email corporativo"
               type="email"
-              placeholder="john.doe@rebuhr.com"
               {...register('email')}
               error={!!errors.email}
               errorMessage={errors.email?.message}
@@ -252,7 +253,10 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
             disabled={!isValid || isLoading}
             className="w-full h-11 text-base font-medium"
           >
-            {isLoading ? 'Creating employee...' : 'Create Employee'}
+            {isLoading 
+              ? (isEditing ? 'Updating employee...' : 'Creating employee...') 
+              : (isEditing ? 'Update Employee' : 'Create Employee')
+            }
           </Button>
         </div>
       </form>
