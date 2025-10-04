@@ -1,19 +1,25 @@
-'use client';
-
-import { useParams, useRouter } from 'next/navigation';
 import { allMockEmployees } from '@/data';
 import { Employee } from '@/types/employee';
-import { Button, Card, InfoCard } from '@/components/ui';
-import { ArrowLeft, Mail, Building2, Calendar, MapPin, DollarSign, User } from 'lucide-react';
+import { Card, InfoCard } from '@/components/ui';
+import { Mail, Building2, Calendar, MapPin, DollarSign, User } from 'lucide-react';
 import { formatHireDate, formatCurrency } from '@/utils';
+import { getEmployeesAction } from '@/app/actions/employess';
+import { BackButton } from '@/components/Employee/BackButton';
 
-export default function EmployeeDetailPage() {
-  const params = useParams();
-  const router = useRouter();
-  const employeeId = params.id;
+interface EmployeeDetailPageProps {
+  params: Promise<{ id: string }>;
+}
 
-  // Find the employee by ID
-  const employee: Employee | undefined = allMockEmployees.find(emp => emp.id === employeeId);
+export default async function EmployeeDetailPage({ params }: EmployeeDetailPageProps) {
+  // Await params in Next.js 15
+  const { id: employeeId } = await params;
+  
+  // Get both server-side created employees and mock employees
+  const serverEmployees = await getEmployeesAction();
+  const allEmployees: Employee[] = [...serverEmployees, ...allMockEmployees];
+
+  // Find the employee by ID in the combined list
+  const employee: Employee | undefined = allEmployees.find(emp => emp.id === employeeId);
 
   if (!employee) {
     return (
@@ -21,10 +27,7 @@ export default function EmployeeDetailPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Employee Not Found</h1>
           <p className="text-gray-600 mb-6">The employee you&apos;re looking for doesn&apos;t exist.</p>
-          <Button onClick={() => router.push('/employees')}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to list
-          </Button>
+          <BackButton />
         </div>
       </div>
     );
@@ -35,14 +38,7 @@ export default function EmployeeDetailPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <Button 
-          variant="outline" 
-          onClick={() => router.push('/employees')}
-          className="mb-4"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to list
-        </Button>
+        <BackButton />
       </div>
 
       {/* Employee Details Card - Centered */}
