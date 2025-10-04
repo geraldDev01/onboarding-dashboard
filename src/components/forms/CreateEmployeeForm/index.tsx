@@ -7,7 +7,8 @@ import { DEPARTMENTS, COUNTRIES } from '@/types/employee';
 import { UserPlus, DollarSign } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
-import { DateTime } from 'luxon';
+import { useEffect, useCallback, useRef } from 'react';
+import { saveDraftToLocalStorage, loadDraftFromLocalStorage } from '@/utils';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface CreateEmployeeFormProps {
@@ -16,11 +17,23 @@ interface CreateEmployeeFormProps {
   error?: string;
 }
 
+// Default form values (empty form)
+const getDefaultValues = (): Partial<CreateEmployeeData> => ({
+  name: '',
+  email: '',
+  department: 'Engineering',
+  hireDate: '',
+  salary: 3000,
+  country: 'El Salvador',
+});
+
 export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
   onSubmit,
   isLoading = false,
   error,
 }) => {
+  const saveIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -30,20 +43,61 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
   } = useForm<CreateEmployeeData>({
     mode: 'onChange',
     resolver: zodResolver(createEmployeeSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      department: 'Engineering',
-      hireDate: DateTime.now().toISO(),
-      salary: 3000,
-      country: 'El Salvador',
-    },
+    defaultValues: getDefaultValues(),
   });
 
   const salaryValue = watch('salary') || 3000;
   const selectedDepartment = watch('department');
   const selectedCountry = watch('country');
   const hireDateValue = watch('hireDate');
+
+  // Load draft from localStorage on component mount
+  useEffect(() => {
+    const draftData = loadDraftFromLocalStorage();
+    if (draftData) {
+      // Set each field value from draft
+      Object.keys(draftData).forEach(key => {
+        const typedKey = key as keyof CreateEmployeeData;
+        if (draftData[typedKey] !== undefined) {
+          setValue(typedKey, draftData[typedKey], { shouldValidate: false });
+        }
+      });
+    }
+  }, [setValue]);
+
+  const formValues = watch();
+
+  // Function to save current form state to localStorage
+  const saveDraft = useCallback(() => {
+    const hasAnyData = Object.values(formValues).some(value => 
+      value !== '' && value !== null && value !== undefined
+    );
+    
+    if (hasAnyData) {
+      saveDraftToLocalStorage(formValues);
+    }
+  }, [formValues]);
+
+  // Setup auto-save every 30 seconds
+  useEffect(() => {
+    // Clear existing interval
+    if (saveIntervalRef.current) {
+      clearInterval(saveIntervalRef.current);
+    }
+
+    // Set new interval to save draft every 30 seconds
+    saveIntervalRef.current = setInterval(saveDraft, 30000);
+    return () => {
+      if (saveIntervalRef.current) {
+        clearInterval(saveIntervalRef.current);
+      }
+    };
+  }, [saveDraft]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(saveDraft, 1000); // Save after 1 second of no changes
+    return () => clearTimeout(timeoutId);
+  }, [formValues, saveDraft]);
 
   // Prepare options for select components
   const departmentOptions = DEPARTMENTS.map(dept => ({
@@ -56,23 +110,28 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
     label: country,
   }));
 
-  // Date picker styles - using CSS classes instead of inline styles
+  // Date picker styles
   const datePickerClass = `w-full px-3 py-2 text-sm rounded-md border ${
     errors.hireDate ? 'border-red-500' : 'border-gray-300'
   } bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`;
+
+  // Handle form submission
+  const handleFormSubmit = (data: CreateEmployeeData) => {
+    onSubmit(data);
+  };
 
   return (
     <div className="bg-white p-8 w-full ">
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-auto">
-          <UserPlus className="w-8 h-8 text-primary-foreground" />
+          <UserPlus className="w-8 h-8 text-white" />
         </div>
         <p className="mt-3 text-sm text-muted-foreground dark:text-muted-foreground">
           Add a new team member to your organization
         </p>
       </div>
 
-      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <form className="space-y-6" onSubmit={handleSubmit(handleFormSubmit)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Full Name */}
           <div className="space-y-2">
@@ -82,7 +141,6 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
               {...register('name')}
               error={!!errors.name}
               errorMessage={errors.name?.message}
-            
             />
           </div>
 
@@ -95,7 +153,6 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
               {...register('email')}
               error={!!errors.email}
               errorMessage={errors.email?.message}
-              
             />
           </div>
 
@@ -151,7 +208,7 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
           />
           {errors.hireDate && (
             <p className="text-sm text-red-500">{errors.hireDate.message}</p>
-          )}    
+          )}
         </div>
 
         {/* Salary */}
@@ -180,8 +237,8 @@ export const CreateEmployeeForm: React.FC<CreateEmployeeFormProps> = ({
 
         {/* Error message */}
         {error && (
-          <div className="bg-destructive/10 border border-destructive/20 rounded-md p-3">
-            <p className="text-sm text-destructive text-center">
+          <div className="bg-red-50 border border-red-200 rounded-md p-3">
+            <p className="text-sm text-red-600 text-center">
               {error}
             </p>
           </div>

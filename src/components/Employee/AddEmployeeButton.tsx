@@ -2,18 +2,20 @@
 
 import { useState } from 'react';
 import { Button, Modal } from '@/components/ui';
-import { CreateEmployeeForm } from '@/components/forms/CreateEmployeeForm';
+import { CreateEmployeeForm } from '@/components/forms/CreateEmployeeForm/index';
 import { CreateEmployeeData } from '@/schemas/createEmployeeSchema';
 import { Plus } from 'lucide-react';
 import { toastHelpers } from '@/components/ui/Toast';
 import { createEmployeeAction } from '@/app/actions/employess';
 import { useRouter } from 'next/navigation';
+import { clearDraftFromLocalStorage } from '@/utils';
 
 export function AddEmployeeButton() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [formKey, setFormKey] = useState(0); // Key to force form reset
 
   const handleCreateEmployee = async (data: CreateEmployeeData) => {
     setIsCreating(true);
@@ -24,6 +26,8 @@ export function AddEmployeeButton() {
       
       setIsModalOpen(false);
       setError(null);
+      clearDraftFromLocalStorage();
+      setFormKey(prev => prev + 1);
       
       // Success toast notification
       toastHelpers.success(
@@ -71,6 +75,7 @@ export function AddEmployeeButton() {
         size="xl"
       >
         <CreateEmployeeForm
+          key={formKey}
           onSubmit={handleCreateEmployee}
           isLoading={isCreating}
           error={error || undefined}
